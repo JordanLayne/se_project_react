@@ -39,7 +39,7 @@ const WeatherCard = ({ weatherTemp, weatherType, isDay }) => {
   return (
     <div className="weather">
       <div className="weather__container">
-        <img src={weatherBanner} className="weather__banner" />
+        <img src={weatherBanner} className="weather__banner"  alt="Weather icon"/>
         <h2 className="weather__temp">{weatherTemp}°F</h2>
       </div>
     </div>

@@ -5,9 +5,9 @@ const ItemModal=({ selectedCard, handleClosePopup })=> {
       <div className="modal">
         <div className="modal__container">
           <button type="button" className="card__close" onClick={handleClosePopup}>
-            <img src={closeButton}></img>
+            <img src={closeButton} alt='close button'></img>
           </button>
-          <img src={selectedCard.link} className="card__modal-image" />
+          <img src={selectedCard.link} className="card__modal-image" alt='item card' />
           <div className="card__info">
             <div className="card__modal-name">{selectedCard.name}</div>
             <div className="card__modal-weather">

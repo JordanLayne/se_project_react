@@ -1,12 +1,13 @@
-import './footer.styles.css'
+import './Footer.Styles.css'
 
 const Footer = () =>{
+    const year = new Date().getFullYear()
     return(
      
-    <div className="footer">
+    <footer className="footer">
         <p>Developed by Practicum student Jordan Layne</p>
-        <p>2023</p>
-    </div>
+        <p>{year}</p>
+    </footer>
     )
 }
 

@@ -1,16 +1,16 @@
-import "./weathercard.styles.css";
-import clearDay from "../../images/sunny-day.png";
-import clearNight from "../../images/sunny-night.png";
-import cloudyDay from "../../images/cloudy-day.png";
-import cloudyNight from "../../images/cloudy-night.png";
-import foggyDay from "../../images/fog-day.png";
-import foggyNight from "../../images/fog-night.png";
-import rainyDay from "../../images/rain-day.png";
-import rainyNight from "../../images/rain-night.png";
-import snowyDay from "../../images/snow-day.png";
-import snowyNight from "../../images/snow-night.png";
-import stormyDay from "../../images/storm-day.png";
-import stormyNight from "../../images/storm-night.png";
+import "./WeatherCard.Styles.css";
+import clearDay from "../../Images/sunny-day.png";
+import clearNight from "../../Images/sunny-night.png";
+import cloudyDay from "../../Images/cloudy-day.png";
+import cloudyNight from "../../Images/cloudy-night.png";
+import foggyDay from "../../Images/fog-day.png";
+import foggyNight from "../../Images/fog-night.png";
+import rainyDay from "../../Images/rain-day.png";
+import rainyNight from "../../Images/rain-night.png";
+import snowyDay from "../../Images/snow-day.png";
+import snowyNight from "../../Images/snow-night.png";
+import stormyDay from "../../Images/storm-day.png";
+import stormyNight from "../../Images/storm-night.png";
 const WeatherCard = ({ weatherTemp, weatherType, isDay }) => {
   let weatherBanner;
 

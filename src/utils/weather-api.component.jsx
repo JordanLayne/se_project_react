@@ -1,17 +1,17 @@
 
-import {apiUrl} from './constants.jsx'
+import {apiUrl} from './Constants.jsx'
 
 
 export const getWeatherForecast = () =>{
 
-    const WeatherApi = fetch(apiUrl).then((res)=>{
+    const weatherApi = fetch(apiUrl).then((res)=>{
         if(res.ok){
             return res.json()
         } else{
             return Promise.reject(`Error: ${res.status}`)
         }
     })
-return WeatherApi
+return weatherApi
     
 }
 

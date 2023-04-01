@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './modalwithform.styles.css'
+import './ModalWithForm.Styles.css'
 const ModalWithForm = ({ title, name, buttonText,handleClosePopup, children }) => {
   return (
     <div className={`modal modal_type_${name}`}>

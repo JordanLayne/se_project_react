@@ -1,7 +1,7 @@
-import "./header.styles.css";
+import "./Header.Styles.css";
 import { useEffect,useState } from "react";
-import HeaderLogo from "../../images/header-logo.svg";
-import Pfp from "../../images/pfp.svg";
+import HeaderLogo from "../../Images/header-logo.svg";
+import Pfp from "../../Images/pfp.svg";
 
 const Header = ({onCreateModal}) => {
     const currentDate = new Date().toLocaleString("default", {
@@ -17,7 +17,12 @@ const Header = ({onCreateModal}) => {
         (position) => {
           const { latitude, longitude } = position.coords;
           fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-            .then((res) => res.json())
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              return res.json();
+            })
             .then((data) => setCurrentLocation(data.locality))
             .catch((error) => console.log(error));
         },
@@ -29,8 +34,8 @@ const Header = ({onCreateModal}) => {
   }, []);
 
     return (
-      <div className="header">
-        <img src={HeaderLogo} alt=""/>
+      <header className="header">
+        <img src={HeaderLogo} alt="Header"/>
         <div className="header-date-location">{currentDate},{currentLocation}</div>
         <button
           type="text"
@@ -40,8 +45,8 @@ const Header = ({onCreateModal}) => {
           +Add clothes
         </button>
         <div className="header-profile-name">Jordan Layne</div>
-        <img src={Pfp} alt=""/>
-      </div>
+        <img src={Pfp} alt="Profile"/>
+      </header>
     );
   };
 

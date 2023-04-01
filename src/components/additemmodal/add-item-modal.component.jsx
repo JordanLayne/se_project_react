@@ -1,5 +1,5 @@
-import ModalWithForm from "../modalwithform/modalwithform.component";
-import "./add-item-modal.styles.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.Component";
+import "./Add-Item-Modal.Styles.css";
 const AddItemModal = ({handleClosePopup}) => {
   return (
     <ModalWithForm
@@ -14,15 +14,15 @@ const AddItemModal = ({handleClosePopup}) => {
         <label className="input-name">Image</label>
         <input className="input-item" type="url" name="link" placeholder="Image URL" />
         <p className="item-weather-text">Select the weather type:</p>
-        <label className="input-radio-name" for='hot'>
+        <label className="input-radio-name" htmlFor='hot'>
           <input className="input-radio" type="radio" name="hot"/>
           Hot
         </label>
-        <label className="input-radio-name" for='warm'>
+        <label className="input-radio-name" htmlFor='warm'>
           <input className="input-radio" type="radio" name="warm"/>
           Warm
         </label>
-        <label className="input-radio-name" for='cold'>
+        <label className="input-radio-name" htmlFor='cold'>
           <input className="input-radio" type="radio" name="cold"/>
           Cold
         </label>

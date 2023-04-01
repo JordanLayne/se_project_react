@@ -1,5 +1,5 @@
 
-import {apiUrl} from './Constants.jsx'
+import { apiUrl } from "./Constants"
 
 
 export const getWeatherForecast = () =>{

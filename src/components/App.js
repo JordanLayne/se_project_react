@@ -12,6 +12,7 @@ import ItemModal from "./ItemModal/Item-Modal.Component";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [weatherTemp, setWeatherTemp] = useState(null);
+  const [weatherType, setWeatherType] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -29,6 +30,7 @@ function App() {
       .then((data) => {
         const temperature = parseWeatherData(data);
         setWeatherTemp(temperature);
+        setWeatherType(data.weather[0].main);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
@@ -42,6 +44,7 @@ function App() {
         weatherTemp={weatherTemp}
         defaultClothingItems={defaultClothingItems}
         handleSelectedCard={handleSelectedCard}
+        weatherType={weatherType}
       />
       <Footer />
       {activeModal === "create" && (

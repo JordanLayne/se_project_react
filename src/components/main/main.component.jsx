@@ -2,11 +2,11 @@ import WeatherCard from "../WeatherCard/WeatherCard.Component";
 import ItemCard from "../ItemCard/Item-Card.Component";
 import "./main.styles.css";
 
-const Main = ({ weatherTemp, defaultClothingItems, handleSelectedCard }) => {
+const Main = ({ weatherTemp, defaultClothingItems, handleSelectedCard,isDay,weatherType }) => {
    
     return (
     <div>
-      <WeatherCard weatherTemp={weatherTemp} />
+      <WeatherCard weatherTemp={weatherTemp} isDay={isDay} weatherType={weatherType}/>
       <p className="weather-info">
         Today is {weatherTemp}°F / You may want to wear:
       </p>

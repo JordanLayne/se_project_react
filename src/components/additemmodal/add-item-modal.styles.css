@@ -1,0 +1,45 @@
+.item-modal-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+flex-wrap: wrap;
+}
+.input-name{
+    font-family: 'Cabinet Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+}
+.input-item{
+    width: 440px;
+    height: 24px;
+    border: none;
+    border-bottom:  1px solid #000000;
+    margin-bottom: 24px;
+}
+.item-weather-text{
+    margin: 14px;
+}
+.input-radio{
+    font-family: 'Cabinet Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+.input-radio-name{
+    
+font-family: 'Cabinet Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 20px;
+
+
+
+color: rgba(0, 0, 0, 0.5);
+}
+.input-radio:checked+label{
+    color: #000000;
+}

@@ -1,0 +1,48 @@
+.modal__container {
+  max-width: 498px;
+  max-height: 610px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__close {
+  background: none;
+  border: none;
+  position: absolute;
+  z-index: 2;
+  right: 2vh;
+  top: 3vh;
+  cursor: pointer;
+}
+
+.card__modal-image {
+  max-width: 498px;
+  max-height: 498px;
+  border-radius: 16px 16px 0 0;
+  object-fit: cover;
+}
+
+.card__info {
+  min-height: 112px;
+  background-color: white;
+  border-radius: 0 0 16px 16px;
+}
+
+.card__modal-name {
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 24px;
+  line-height: 1.2;
+
+  margin-top: 20px;
+  margin-left: 32px;
+}
+
+.card__modal-weather {
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 24px;
+  line-height: 1.2;
+
+  margin-top: 12px;
+  margin-left: 32px;
+}

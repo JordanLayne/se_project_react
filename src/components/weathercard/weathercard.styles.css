@@ -1,0 +1,26 @@
+.weather {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1360px;
+}
+.weather__container{
+    position: relative;
+    max-width: 100%;
+    height: 80px;
+}
+.weather__banner {
+    width: 100%;
+    height: 80px;
+}
+.weather__container .weather__temp {
+  position: absolute;
+  top: 13%;
+  right: 46%;
+  transform: translate(0, -50%);
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 36px;
+  font-family: "CabinetGrotesk-Extrabold";
+  line-height: 1.1;
+}

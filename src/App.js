@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from "react";
+import {
+  getWeatherForecast,
+  parseWeatherData,
+} from "./utils/weather-api.component";
+import { defaultClothingItems } from "./utils/constants";
+import Header from "./components/header/header.component";
+import Main from "./components/main/main.component";
+import Footer from "./components/footer/footer.component";
+import AddItemModal from "./components/additemmodal/add-item-modal.component";
+import ItemModal from "./components/itemmodal/item-modal.component";
 function App() {
+  const [activeModal, setActiveModal] = useState('')
+  const [weatherTemp, setWeatherTemp] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const handleCreateModal = () =>{
+    setActiveModal('create')
+  }
+  const handleClosePopup = () =>{
+    setActiveModal('')
+  }
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  useEffect(() => {
+    getWeatherForecast().then((data) => {
+      const temperature = parseWeatherData(data);
+      setWeatherTemp(temperature);
+    });
+  }, []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header onCreateModal={handleCreateModal}/>
+    <Main weatherTemp={weatherTemp} defaultClothingItems={defaultClothingItems} handleSelectedCard={handleSelectedCard}/>
+    <Footer/>
+    {activeModal === 'create'&&(
+    <AddItemModal handleClosePopup={handleClosePopup}/>
+    )}
+    {activeModal === 'preview'&&(
+    <ItemModal handleClosePopup={handleClosePopup}  selectedCard={selectedCard}/>
+    )}
+    </>
   );
 }
 

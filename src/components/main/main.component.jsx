@@ -2,7 +2,7 @@ import WeatherCard from "../WeatherCard/WeatherCard.Component";
 import ItemCard from "../ItemCard/Item-Card.Component";
 import "./main.styles.css";
 
-const Main = ({ weatherTemp, defaultClothingItems, handleSelectedCard,isDay,weatherType }) => {
+const Main = ({ weatherTemp, defaultClothingItems, handleSelectedCard,isDay, weatherType }) => {
    
     return (
     <div>

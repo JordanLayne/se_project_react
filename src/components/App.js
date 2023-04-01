@@ -45,6 +45,7 @@ function App() {
         defaultClothingItems={defaultClothingItems}
         handleSelectedCard={handleSelectedCard}
         weatherType={weatherType}
+        isDay={true}
       />
       <Footer />
       {activeModal === "create" && (

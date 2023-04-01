@@ -1,4 +1,4 @@
-import closeButton from '../../Images/Union.png'
+import closeButton from '../../images/Union.png'
 import './ItemModal.Styles.css'
 const ItemModal=({ selectedCard, handleClosePopup })=> {
     return (

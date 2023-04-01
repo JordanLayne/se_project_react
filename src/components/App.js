@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   getWeatherForecast,
   parseWeatherData,
-} from "../Utils/WeatherApi";
-import { defaultClothingItems } from "../Utils/Constants";
+} from "../utils/WeatherApi";
+import { defaultClothingItems } from "../utils/Constants";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";

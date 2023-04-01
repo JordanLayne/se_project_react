@@ -1,7 +1,7 @@
 import "./Header.Styles.css";
 import { useEffect,useState } from "react";
-import HeaderLogo from "../../Images/header-logo.svg";
-import Pfp from "../../Images/pfp.svg";
+import HeaderLogo from "../../images/header-logo.svg";
+import Pfp from "../../images/pfp.svg";
 
 const Header = ({onCreateModal}) => {
     const currentDate = new Date().toLocaleString("default", {

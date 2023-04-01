@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import {
   getWeatherForecast,
   parseWeatherData,
-} from "../Utils/Weather-Api.Component";
+} from "../Utils/WeatherApi";
 import { defaultClothingItems } from "../Utils/Constants";
-import Header from "./Header/Header.Component";
-import Main from "./Main/Main.Component";
-import Footer from "./Footer/Footer.Component";
-import AddItemModal from "./AddItemModal/Add-Item-Modal.Component";
-import ItemModal from "./ItemModal/Item-Modal.Component";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import Footer from "./Footer/Footer";
+import AddItemModal from "./AddItemModal/AddItemModal";
+import ItemModal from "./ItemModal/ItemModal";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [weatherTemp, setWeatherTemp] = useState(null);

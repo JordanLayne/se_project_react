@@ -1,4 +1,4 @@
-import "./header.styles.css";
+import "./Header.Styles.css";
 import { useEffect,useState } from "react";
 import HeaderLogo from "../../Images/header-logo.svg";
 import Pfp from "../../Images/pfp.svg";

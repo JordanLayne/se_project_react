@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/%7Bse_project_react%7D/static/css/main.924504f2.css",
-    "main.js": "/%7Bse_project_react%7D/static/js/main.9bd9500d.js",
-    "static/js/787.79f92504.chunk.js": "/%7Bse_project_react%7D/static/js/787.79f92504.chunk.js",
-    "static/media/pfp.svg": "/%7Bse_project_react%7D/static/media/pfp.6ec3309caa553c5a37a77ad878ca46b2.svg",
-    "static/media/header-logo.svg": "/%7Bse_project_react%7D/static/media/header-logo.2e52a3b54443b649938df0a9b3d231e2.svg",
-    "index.html": "/%7Bse_project_react%7D/index.html",
-    "main.924504f2.css.map": "/%7Bse_project_react%7D/static/css/main.924504f2.css.map",
-    "main.9bd9500d.js.map": "/%7Bse_project_react%7D/static/js/main.9bd9500d.js.map",
-    "787.79f92504.chunk.js.map": "/%7Bse_project_react%7D/static/js/787.79f92504.chunk.js.map"
+    "main.css": "/se_project_react/static/css/main.924504f2.css",
+    "main.js": "/se_project_react/static/js/main.f1510de2.js",
+    "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
+    "static/media/pfp.svg": "/se_project_react/static/media/pfp.ea14f73b6aacdaa4921f8674726eb8b5.svg",
+    "static/media/fog-night.png": "/se_project_react/static/media/fog-night.1abb94995fa162296f6a.png",
+    "static/media/fog-day.png": "/se_project_react/static/media/fog-day.b08112b74bc884082ef6.png",
+    "static/media/header-logo.svg": "/se_project_react/static/media/header-logo.680b54a3d7ea1deb779a22177ba7913f.svg",
+    "index.html": "/se_project_react/index.html",
+    "main.924504f2.css.map": "/se_project_react/static/css/main.924504f2.css.map",
+    "main.f1510de2.js.map": "/se_project_react/static/js/main.f1510de2.js.map",
+    "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.924504f2.css",
-    "static/js/main.9bd9500d.js"
+    "static/js/main.f1510de2.js"
   ]
 }

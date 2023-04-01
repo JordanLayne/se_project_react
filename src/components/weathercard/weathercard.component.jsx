@@ -1,4 +1,4 @@
-import "./WeatherCard.Styles.css";
+import "./weathercard.styles.css";
 import clearDay from "../../Images/sunny-day.png";
 import clearNight from "../../Images/sunny-night.png";
 import cloudyDay from "../../Images/cloudy-day.png";

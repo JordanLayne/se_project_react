@@ -1,4 +1,4 @@
-import './Footer.Styles.css'
+import './footer.styles.css'
 
 const Footer = () =>{
     const year = new Date().getFullYear()

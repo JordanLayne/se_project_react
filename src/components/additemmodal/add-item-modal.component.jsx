@@ -1,5 +1,5 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.Component";
-import "./Add-Item-Modal.Styles.css";
+import "./add-item-modal.styles.css";
 const AddItemModal = ({handleClosePopup}) => {
   return (
     <ModalWithForm

@@ -1,6 +1,6 @@
 import WeatherCard from "../WeatherCard/WeatherCard.Component";
 import ItemCard from "../ItemCard/Item-Card.Component";
-import "./Main.Styles.css";
+import "./main.styles.css";
 
 const Main = ({ weatherTemp, defaultClothingItems, handleSelectedCard }) => {
    

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import HeaderLogo from "../../images/header-logo.svg";
 import Pfp from "../../images/pfp.svg";
 import ToggleSwitch from "../TempSwitch/TempSwitch";
-import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 const Header = ({ onCreateModal , onChange}) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",

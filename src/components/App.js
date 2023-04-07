@@ -23,7 +23,7 @@ function App() {
   const handleCreateModal = () => setActiveModal("create");
   const handleDeleteClick = () => setActiveModal("confirm");
   const handleClosePopup = () => setActiveModal("");
-  const handleSwitchToggle = () => {
+  const handleToggleSwitchChange = () => {
     setValue(!value);
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
@@ -74,12 +74,12 @@ function App() {
   return (
     <BrowserRouter>
       <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleSwitchToggle, value }}
+        value={{ currentTemperatureUnit, handleToggleSwitchChange, value }}
       >
         <Header
           weatherData={weatherData}
           onCreateModal={handleCreateModal}
-          onChange={handleSwitchToggle}
+          onChange={handleToggleSwitchChange}
           checked={value}
         />
         <Switch>

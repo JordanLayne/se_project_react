@@ -1,24 +1,24 @@
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnitContext";
 import './TempSwitch.css'
+
 const ToggleSwitch = ({ checked, onChange }) => {
-    const { handleSwitchToggle } = useContext(CurrentTemperatureUnitContext);
-    let isChecked = checked;
-    
-    const white = "#FFF";
-    const gray = "rgba(0, 0, 0, 0.5)";
-  
-    const handleToggle = () => {
-      isChecked = !isChecked;
-      handleSwitchToggle(!isChecked);
-    };
+  const { handleSwitchToggle } = useContext(CurrentTemperatureUnitContext);
+
+  const white = "#FFF";
+  const gray = "rgba(0, 0, 0, 0.5)";
+
+  const handleToggle = () => {
+    handleSwitchToggle(!checked);
+  };
+
   return (
     <div className="switch">
       <input
         className="switch__input"
         id={"switch"}
         type="checkbox"
-        checked={isChecked}
+        checked={checked}
         onChange={onChange}
       />
       <label className="switch__label" htmlFor={`switch`}>
@@ -27,7 +27,7 @@ const ToggleSwitch = ({ checked, onChange }) => {
           <span
             className="switch__f"
             style={{
-              color: (!isChecked && white) || (isChecked && gray),
+              color: (!checked && white) || (checked && gray),
             }}
           >
             F
@@ -35,7 +35,7 @@ const ToggleSwitch = ({ checked, onChange }) => {
           <span
             className="switch__c"
             style={{
-              color: (!isChecked && gray) || (isChecked && white),
+              color: (!checked && gray) || (checked && white),
             }}
           >
             C

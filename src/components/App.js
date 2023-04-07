@@ -1,74 +1,134 @@
-import React, { useEffect, useState, useContext } from "react";
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { getWeatherForecast, parseWeatherData } from "../utils/WeatherApi";
-import { defaultClothingItems } from "../utils/Constants";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { getClothing, addClothing, deleteCard } from "../utils/api";
+import { getWeather, filterData } from "../utils/WeatherApi";
+
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 import AddItemModal from "./AddItemModal/AddItemModal";
 import ItemModal from "./ItemModal/ItemModal";
-import CurrentTemperatureUnitContext from "../Contexts/CurrentTemperatureUnitContext";
+import PopupWithConfirmation from "./ModalConfirmation/ModalConfirmation";
 import Profile from "./Profile/Profile";
+
+import CurrentTemperatureUnitContext from "../Contexts/CurrentTemperatureUnitContext";
+
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [weatherTemp, setWeatherTemp] = useState(null);
-  const [weatherType, setWeatherType] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
   const [selectedCard, setSelectedCard] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [clothingCards, setClothingCards] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const handleCreateModal = () => {
-    setActiveModal("create");
+  const [value, setValue] = useState(false);
+  const handleCreateModal = () => setActiveModal("create");
+  const handleDeleteClick = () => setActiveModal("confirm");
+  const handleClosePopup = () => setActiveModal("");
+  const handleSwitchToggle = () => {
+    setValue(!value);
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
-  const handleClosePopup = () => {
-    setActiveModal("");
-  };
+  const handleCancel = () => setActiveModal("preview");
+
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-  const handleSwitchToggle = () => {
-    setCurrentTemperatureUnit(checked ? "C" : "F");
-    setChecked(!checked);
+
+  const handleOutClick = (evt) => {
+    if (evt.target === evt.currentTarget) setActiveModal();
+  };
+
+  const handleAddSubmit = (rawCard) => {
+    addClothing(rawCard)
+      .then((data) => {
+        const card = rawCard;
+        card.id = data.id;
+        setClothingCards([card, ...clothingCards]);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleDelete = (id) => {
+    deleteCard(id)
+      .then(() => {
+        setClothingCards(
+          clothingCards.filter((card) => (card.id !== id))
+        );
+        handleClosePopup();
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    getWeatherForecast()
-      .then((data) => {
-        const temperature = parseWeatherData(data);
-        setWeatherTemp(temperature);
-        setWeatherType(data.weather[0].main);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
+    getWeather()
+      .then((data) => setWeatherData(filterData(data)))
+      .catch((error) => console.error("Error fetching weather data:", error));
+  }, []);
+
+  useEffect(() => {
+    getClothing()
+      .then((data) => setClothingCards(data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
-<BrowserRouter>
-      <CurrentTemperatureUnitContext.Provider value={currentTemperatureUnit }>
-        <Header onCreateModal={handleCreateModal} onChange={handleSwitchToggle}  checked={checked}/>
+    <BrowserRouter>
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleSwitchToggle, value }}
+      >
+        <Header
+          weatherData={weatherData}
+          onCreateModal={handleCreateModal}
+          onChange={handleSwitchToggle}
+          checked={value}
+        />
         <Switch>
-          <Route exact path="/" render={() => (
-            <Main
-              weatherTemp={weatherTemp}
-              defaultClothingItems={defaultClothingItems}
-              handleSelectedCard={handleSelectedCard}
-              weatherType={weatherType}
-              isDay={true}
-            />
-          )} />
-          <Route exact path="/profile" render={() =>(
-            <Profile handleSelectedCard={handleSelectedCard}  defaultClothingItems={defaultClothingItems} onCreateModal={handleCreateModal}/>
-            )} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Main
+                weatherData={weatherData}
+                cards={clothingCards}
+                onCardClick={handleSelectedCard}
+                isDay={true}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={() => (
+              <Profile
+                weatherData={weatherData}
+                onCardClick={handleSelectedCard}
+                cards={clothingCards}
+                onCreateModal={handleCreateModal}
+              />
+            )}
+          />
         </Switch>
         <Footer />
         {activeModal === "create" && (
-          <AddItemModal handleClosePopup={handleClosePopup} />
+          <AddItemModal
+            handleClosePopup={handleClosePopup}
+            onAddItem={handleAddSubmit}
+          />
         )}
         {activeModal === "preview" && (
           <ItemModal
             handleClosePopup={handleClosePopup}
-            selectedCard={selectedCard}
+            card={selectedCard}
+            onDeleteClick={handleDeleteClick}
+          />
+        )}
+        {activeModal === "confirm" && (
+          <PopupWithConfirmation
+            onClose={handleClosePopup}
+            onOutClick={handleOutClick}
+            onCancel={handleCancel}
+            onDelete={handleDelete}
+            card={selectedCard}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>

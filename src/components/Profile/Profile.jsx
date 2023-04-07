@@ -1,23 +1,16 @@
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
+
 const Profile = ({
-  weatherTemp,
-  defaultClothingItems,
-  handleSelectedCard,
-  isDay,
-  weatherType,
-  onCreateModal,
+     weatherData, cards, onCardClick,onCreateModal
 }) => {
+
   return (
+    
     <div className="profile">
       <SideBar />
-      <ClothesSection
-        defaultClothingItems={defaultClothingItems}
-        onSelectCard={handleSelectedCard}
-        handleSelectedCard={handleSelectedCard}
-        onCreateModal={onCreateModal}
-      />
+      <ClothesSection weatherData={weatherData} cards={cards} onCardClick={onCardClick} onCreateModal={onCreateModal}/>
     </div>
   );
 };

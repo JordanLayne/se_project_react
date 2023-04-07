@@ -1,9 +1,12 @@
 
 
-const ItemCard =({defaultClothingItems,onSelectCard})=>{
-    const {name,link} = defaultClothingItems
+const ItemCard =({card,onCardClick})=>{
+    const {name,imageUrl} = card
+    const onClick = () => {
+        onCardClick(card);
+      };
        return(
-           <div className="item-container" style={{backgroundImage:`url(${link})`}} onClick={onSelectCard}>
+           <div className="item-container" style={{backgroundImage:`url(${imageUrl})`}} onClick={onClick}>
                <h2 className='item-name'>{name}</h2>
            </div>
        )

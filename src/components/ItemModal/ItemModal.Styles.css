@@ -46,3 +46,20 @@
   margin-top: 12px;
   margin-left: 32px;
 }
+.modal__delete{
+  position: relative;
+  top: -70px;
+  right: -350px;
+  background: none;
+  border: none;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 24px;
+  line-height: 1.2;
+  color: #FF4D00;
+  ;
+
+}
+.modal__delete:hover{
+  opacity: 0.6;
+    cursor: pointer;
+}

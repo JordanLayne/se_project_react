@@ -1,3 +1,6 @@
+
+import { useContext } from "react";
+import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnitContext";
 import "./WeatherCard.Styles.css";
 import clearDay from "../../images/sunny-day.png";
 import clearNight from "../../images/sunny-night.png";
@@ -11,13 +14,12 @@ import snowyDay from "../../images/snow-day.png";
 import snowyNight from "../../images/snow-night.png";
 import stormyDay from "../../images/storm-day.png";
 import stormyNight from "../../images/storm-night.png";
-import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnitContext";
-const WeatherCard = ({ weatherTemp, weatherType, isDay}) => {
-  const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
-  const temperature = currentTemperatureUnit === "F" ? weatherTemp : Math.round((weatherTemp - 32) * 5 / 9);
+
+const WeatherCard = ({ weatherData, isDay }) => {
+  const {currentTemperatureUnit}= useContext(CurrentTemperatureUnitContext);
+  const temperature = weatherData.temp ? currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C : "";
   let weatherBanner;
-  switch (weatherType) {
+  switch (weatherData.weather) {
     case "Clear":
       weatherBanner = isDay ? clearDay : clearNight;
       break;

@@ -43,3 +43,12 @@ color: rgba(0, 0, 0, 0.5);
 .input-radio:checked+label{
     color: #000000;
 }
+.modal__input-container {
+    margin: 14px 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    height: 96px;
+  }
+  

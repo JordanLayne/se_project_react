@@ -2,7 +2,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "./Main.Styles.css";
 import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 const Main = ({ weatherData, cards, onCardClick,isDay }) => {
   const {currentTemperatureUnit}= useContext(CurrentTemperatureUnitContext);
   const temperature = weatherData.temp ? currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C : "";

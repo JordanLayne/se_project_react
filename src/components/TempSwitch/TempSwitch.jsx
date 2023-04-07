@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import './TempSwitch.css'
 
 const ToggleSwitch = ({ checked, onChange }) => {
@@ -11,6 +11,19 @@ const ToggleSwitch = ({ checked, onChange }) => {
   const handleToggle = () => {
     handleSwitchToggle(!checked);
   };
+
+  const handleAddSubmit = (rawCard) => {
+    addClothing(rawCard)
+      .then((data) => {
+        const card = rawCard;
+        card.id = data.id;
+        setClothingCards([card, ...clothingCards]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
 
   return (
     <div className="switch">

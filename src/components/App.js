@@ -11,7 +11,7 @@ import ItemModal from "./ItemModal/ItemModal";
 import PopupWithConfirmation from "./ModalConfirmation/ModalConfirmation";
 import Profile from "./Profile/Profile";
 
-import CurrentTemperatureUnitContext from "../Contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");

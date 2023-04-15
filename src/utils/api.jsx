@@ -8,10 +8,14 @@ const processRes = (res) => {
 };
 
 export const getClothing = () => {
-  return fetch(`${baseUrl}/items`).then((res) => processRes(res));
+  return fetch(`${baseUrl}/items`)
+    .then((res) => processRes(res))
+    .then((items) => items || []);
 };
-
 export const addClothing = (card) => {
+  if (!card) {
+    return Promise.reject("Error: card is empty or undefined");
+  }
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     body: JSON.stringify({
@@ -21,7 +25,6 @@ export const addClothing = (card) => {
     }),
   }).then((res) => processRes(res));
 };
-
 export const deleteCard = (id) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",

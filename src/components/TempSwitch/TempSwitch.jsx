@@ -11,20 +11,6 @@ const ToggleSwitch = ({ checked, onChange }) => {
   const handleToggle = () => {
     handleSwitchToggle(!checked);
   };
-
-  const handleAddSubmit = (rawCard) => {
-    addClothing(rawCard)
-      .then((data) => {
-        const card = rawCard;
-        card.id = data.id;
-        setClothingCards([card, ...clothingCards]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-
   return (
     <div className="switch">
       <input

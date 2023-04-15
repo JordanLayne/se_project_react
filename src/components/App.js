@@ -40,23 +40,22 @@ function App() {
 
   const handleAddSubmit = (rawCard) => {
     addClothing(rawCard)
-      .then((data) => {
-        const card = rawCard;
-        card.id = data.id;
-        setClothingCards([card, ...clothingCards]);
-      })
-      .catch((err) => console.log(err));
+    .then((data) => {
+      const card = rawCard;
+      card.id = data.id;
+      setClothingCards([card, ...clothingCards]);
+      handleClosePopup();
+    })
+    .catch((err) => console.log(err));
   };
 
   const handleDelete = (id) => {
     deleteCard(id)
-      .then(() => {
-        setClothingCards(
-          clothingCards.filter((card) => (card.id !== id))
-        );
-        handleClosePopup();
-      })
-      .catch((err) => console.log(err));
+    .then(() => {
+      setClothingCards(clothingCards.filter((card) => card.id !== id));
+      handleClosePopup();
+    })
+    .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -70,7 +69,17 @@ function App() {
       .then((data) => setClothingCards(data))
       .catch((err) => console.log(err));
   }, []);
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        handleClosePopup();
+      }
+    }
 
+    document.addEventListener('keydown', closeByEscape)
+    
+    return () => document.removeEventListener('keydown', closeByEscape)
+}, [])
   return (
     <BrowserRouter>
       <CurrentTemperatureUnitContext.Provider
@@ -113,6 +122,7 @@ function App() {
           <AddItemModal
             handleClosePopup={handleClosePopup}
             onAddItem={handleAddSubmit}
+            
           />
         )}
         {activeModal === "preview" && (

@@ -22,19 +22,19 @@ const AddItemModal = ({ onAddItem, handleClosePopup }) => {
       weather: radioVal,
     };
 
+   
     try {
-      const data = await onAddItem(card);
-      card.id = data.id;
+      await onAddItem(card);
       setRadioVal("");
       setImageVal("");
       setNameVal("");
-      setLoading(false);
       handleClosePopup();
     } catch (error) {
       setError(error.message);
+    } finally {
       setLoading(false);
     }
-  };
+  }
 
   const onNameChange = (evt) => {
     setNameVal(evt.target.value);
@@ -48,14 +48,7 @@ const AddItemModal = ({ onAddItem, handleClosePopup }) => {
     setRadioVal(evt.target.value);
   };
 
-  React.useEffect(() => {
-    setNameVal("");
-
-    setImageVal("");
-
-    setRadioVal("");
-  }, []);
-
+  
   return (
     <ModalWithForm
     title="New garment"

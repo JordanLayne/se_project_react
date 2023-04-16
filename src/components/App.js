@@ -49,7 +49,7 @@ function App() {
   };
 
   const handleAddSubmit = (rawCard) => {
-    addClothing(rawCard)
+    return addClothing(rawCard)
       .then((data) => {
         const card = rawCard;
 

@@ -317,6 +317,7 @@ function App() {
               handleClosePopup={handleClosePopup}
               onAddItem={handleAddSubmit}
               token={token}
+              isLoading={isLoading}
             />
           )}
 

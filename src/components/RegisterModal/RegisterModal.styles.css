@@ -1,0 +1,13 @@
+.login-button{
+    position: fixed;
+  bottom: 140px;
+  left: 560px;
+  font-family: 'Cabinet Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  }
+  .login-button:hover{
+      cursor: pointer;
+  }

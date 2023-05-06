@@ -1,6 +1,6 @@
 .modal__container {
-  max-width: 498px;
-  max-height: 610px;
+  width: 498px;
+  height: 610px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -17,8 +17,8 @@
 }
 
 .card__modal-image {
-  max-width: 498px;
-  max-height: 498px;
+  width: 498px;
+  height: 498px;
   border-radius: 16px 16px 0 0;
   object-fit: cover;
 }

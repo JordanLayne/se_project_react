@@ -3,14 +3,30 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
 const Profile = ({
-     weatherData, cards, onCardClick,onCreateModal
+  weatherData,
+  cards,
+  onCardClick,
+  onCreateModal,
+  isLoggedIn,
+  handleLogout,
+  onLike,
+  editClick,
 }) => {
-
   return (
-    
     <div className="profile">
-      <SideBar />
-      <ClothesSection weatherData={weatherData} cards={cards} onCardClick={onCardClick} onCreateModal={onCreateModal}/>
+      <SideBar
+        isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout}
+        handleEdit={editClick}
+      />
+      <ClothesSection
+        weatherData={weatherData}
+        cards={cards}
+        onCardClick={onCardClick}
+        onCreateModal={onCreateModal}
+        editClick={editClick}
+        onLike={onLike}
+      />
     </div>
   );
 };

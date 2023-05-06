@@ -40,9 +40,10 @@
   background-color: white;
   border: none;
   background-image: url("../../images/Union.png");
-  left: 448px;
+  left: 465px;
   bottom: 58px;
   margin-right: 30px;
+  cursor: pointer;
 }
 .modal__save-btn {
   align-items: center;
@@ -54,4 +55,5 @@
 color:white;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
+  cursor: pointer;
 }

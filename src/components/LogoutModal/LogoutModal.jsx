@@ -1,16 +1,11 @@
-import "./ModalConfirm.css";
 import closeButton from "../../images/Union.png";
-const PopupWithConfirmation = ({
-  onClose,
-  onOutClick,
-  onDelete,
-  onCancel,
-  card,
-}) => {
-  const handleDelete = () => {
-    onDelete(card._id);
-  };
 
+const LogoutModal = ({
+  handleClosePopup,
+  handleLogout,
+  onCancel,
+  onOutClick,
+}) => {
   return (
     <div className="popup__container-confirm" onClick={onOutClick}>
       <div className="popup__confirm">
@@ -18,22 +13,21 @@ const PopupWithConfirmation = ({
           className="popup__close"
           alt="Close button"
           src={closeButton}
-          onClick={onClose}
+          onClick={handleClosePopup}
         />
 
         <div className="popup__container_confirm">
           <p className="popup__text_confirm">
-            Are you sure you want to delete this item?
+            Are you sure you want to log out?
           </p>
-          <p className="popup__text_confirm">This action is irreversible</p>
         </div>
         <button
           className="popup__button_confirm"
           type="button"
           aria-label="Confirm"
-          onClick={handleDelete}
+          onClick={handleLogout}
         >
-          Yes, delete item
+          Yes, Log out
         </button>
         <button
           className="popup__button_cancel"
@@ -48,4 +42,4 @@ const PopupWithConfirmation = ({
   );
 };
 
-export default PopupWithConfirmation;
+export default LogoutModal;

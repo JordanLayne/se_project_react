@@ -3,9 +3,20 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./Main.Styles.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-const Main = ({ weatherData, cards, onCardClick,isDay }) => {
-  const {currentTemperatureUnit}= useContext(CurrentTemperatureUnitContext);
-  const temperature = weatherData.temp ? currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C : "";
+const Main = ({
+  weatherData,
+  cards,
+  onCardClick,
+  isDay,
+  isLoggedIn,
+  onLike,
+}) => {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const temperature = weatherData.temp
+    ? currentTemperatureUnit === "F"
+      ? weatherData.temp.F
+      : weatherData.temp.C
+    : "";
   if (!weatherData.temp) return null;
   const temp = weatherData.temp.calc;
 
@@ -20,20 +31,24 @@ const Main = ({ weatherData, cards, onCardClick,isDay }) => {
   };
 
   const tempRange = getTempRange();
-    return (
+  return (
     <div>
-      <WeatherCard weatherData={weatherData} isDay={isDay}/>
+      <WeatherCard weatherData={weatherData} isDay={isDay} />
       <p className="weather-info">
-        Today is  {temperature}°{currentTemperatureUnit} / You may want to wear:
+        Today is {temperature}°{currentTemperatureUnit} / You may want to wear:
       </p>
       <div className="directory-container">
-        {cards.filter((card) => card.weather ===tempRange).map((card) => (
-          <ItemCard
-            key={card.id}
-            card={card}
-           onCardClick={onCardClick}
-          />
-        ))}
+        {cards
+          .filter((card) => card.weather === tempRange)
+          .map((card) => (
+            <ItemCard
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              isLoggedIn={isLoggedIn}
+              onLike={onLike}
+            />
+          ))}
       </div>
     </div>
   );

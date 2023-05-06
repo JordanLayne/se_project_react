@@ -1,6 +1,5 @@
 import { apiUrl } from "./Constants";
 
-
 export const getWeather = () => {
   return fetch(apiUrl).then((res) => {
     if (res.ok) {

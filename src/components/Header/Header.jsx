@@ -1,11 +1,21 @@
 import "./Header.Styles.css";
 import { useEffect, useState, useContext } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import HeaderLogo from "../../images/header-logo.svg";
-import Pfp from "../../images/pfp.svg";
 import ToggleSwitch from "../TempSwitch/TempSwitch";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-const Header = ({ onCreateModal , onChange}) => {
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+const Header = ({
+  onCreateModal,
+  onChange,
+  onLoginModal,
+  onRegisterModal,
+  isLoggedIn,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
+  const userData = currentUser.data
+    ? currentUser.data
+    : { name: "", avatar: "" };
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -47,26 +57,46 @@ const Header = ({ onCreateModal , onChange}) => {
   return (
     <header className="header">
       <Link to="/">
-      <img src={HeaderLogo} alt="Header" />
+        <img src={HeaderLogo} alt="Header" />
       </Link>
       <div className="header-date-location">
         {currentDate},{currentLocation}
       </div>
-      <ToggleSwitch
-        checked={checked} onChange={handleSwitchToggle}
-      />
-      <button
-        type="text"
-        className="header-add-clothes"
-        onClick={onCreateModal}
-      >
-        +Add clothes
-      </button>
-   
-      <div className="header-profile-name">Jordan Layne</div>
-      <Link to="/profile">
-      <img src={Pfp} alt="Profile" />
-      </Link>
+      <ToggleSwitch checked={checked} onChange={handleSwitchToggle} />
+      {isLoggedIn ? (
+        <>
+          <button
+            type="text"
+            className="header-add-clothes"
+            onClick={onCreateModal}
+          >
+            +Add clothes
+          </button>
+
+          <div className="header-profile-name">{userData.name}</div>
+          <Link to="/profile">
+            <img
+              src={userData.avatar}
+              alt="Profile"
+              className="profile__avatar"
+            />
+          </Link>
+        </>
+      ) : (
+        <>
+          <button
+            type="text"
+            className="header-add-clothes"
+            onClick={onRegisterModal}
+          >
+            Sign Up
+          </button>
+
+          <div className="header-profile-name" onClick={onLoginModal}>
+            Log in
+          </div>
+        </>
+      )}
     </header>
   );
 };

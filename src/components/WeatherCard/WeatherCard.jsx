@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./WeatherCard.Styles.css";
@@ -16,8 +15,12 @@ import stormyDay from "../../images/storm-day.png";
 import stormyNight from "../../images/storm-night.png";
 
 const WeatherCard = ({ weatherData, isDay }) => {
-  const {currentTemperatureUnit}= useContext(CurrentTemperatureUnitContext);
-  const temperature = weatherData.temp ? currentTemperatureUnit === "F" ? weatherData.temp.F : weatherData.temp.C : "";
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const temperature = weatherData.temp
+    ? currentTemperatureUnit === "F"
+      ? weatherData.temp.F
+      : weatherData.temp.C
+    : "";
   let weatherBanner;
   switch (weatherData.weather) {
     case "Clear":
@@ -44,8 +47,14 @@ const WeatherCard = ({ weatherData, isDay }) => {
   return (
     <div className="weather">
       <div className="weather__container">
-        <img src={weatherBanner} className="weather__banner"  alt="Weather icon"/>
-        <h2 className="weather__temp">{temperature}°{currentTemperatureUnit}</h2>
+        <img
+          src={weatherBanner}
+          className="weather__banner"
+          alt="Weather icon"
+        />
+        <h2 className="weather__temp">
+          {temperature}°{currentTemperatureUnit}
+        </h2>
       </div>
     </div>
   );

@@ -1,7 +1,15 @@
 import ItemCard from "../ItemCard/ItemCard";
-
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ClothesSection.css";
-const ClothesSection = ({ onCreateModal,cards,onCardClick }) => {
+const ClothesSection = ({
+  onCreateModal,
+  cards,
+  onCardClick,
+  isLoggedIn,
+  onLike,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
   return (
     <div className="profile__container">
       <div className="profile__subcontainer">
@@ -16,14 +24,21 @@ const ClothesSection = ({ onCreateModal,cards,onCardClick }) => {
         </button>
       </div>
       <ul className="profile__cards">
-
-      {cards.map((card) => (
-          <ItemCard
-          key={card.id}
-            card={card}
-           onCardClick={onCardClick}
-          />
-        ))}
+        {cards
+          .filter(
+            (card) =>
+              card.owner ===
+              (currentUser.data === undefined ? "" : currentUser.data._id)
+          )
+          .map((card) => (
+            <ItemCard
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              onLike={onLike}
+              isLoggedIn={isLoggedIn}
+            />
+          ))}
       </ul>
     </div>
   );

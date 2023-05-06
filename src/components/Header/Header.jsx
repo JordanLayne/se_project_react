@@ -1,5 +1,6 @@
 import "./Header.Styles.css";
 import { useEffect, useState, useContext } from "react";
+import { processRes } from "../../utils/Constants";
 import { Link } from "react-router-dom";
 import HeaderLogo from "../../images/header-logo.svg";
 import ToggleSwitch from "../TempSwitch/TempSwitch";
@@ -38,22 +39,16 @@ const Header = ({
           fetch(
             `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
           )
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-              }
-              return res.json();
-            })
-            .then((data) => setCurrentLocation(data.locality))
-            .catch((error) => console.log(error));
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
-  }, []);
-
+          .then(processRes)
+          .then((data) => setCurrentLocation(data.locality))
+          .catch((error) => console.log(error));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+}, []);
   return (
     <header className="header">
       <Link to="/">

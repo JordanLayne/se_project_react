@@ -1,4 +1,4 @@
-import { baseUrl, processRes } from "./utils/Constants";
+import { baseUrl, processRes } from "./Constants";
 
 export async function registerUser(email, password, name, avatar) {
   const response = await fetch(`${baseUrl}/signup`, {

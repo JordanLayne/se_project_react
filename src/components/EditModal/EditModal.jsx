@@ -24,6 +24,11 @@ const EditModal = ({ isLoading, handleClosePopup, handleEdit }) => {
     handleEdit(updatedInfo);
   };
 
+  React.useEffect(() => {
+    setName(currentUser.data.name);
+    setAvatar(currentUser.data.avatar);
+  }, []);
+
   return (
     <ModalWithForm
       title="Change profile data"

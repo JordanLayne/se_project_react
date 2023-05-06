@@ -14,10 +14,11 @@ import {
   removeLike,
   editProfile,
 } from "../utils/api";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { getWeather, filterData } from "../utils/WeatherApi";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
-import * as auth from "../auth";
+import * as auth from "../utils/auth";
 import Footer from "./Footer/Footer";
 import AddItemModal from "./AddItemModal/AddItemModal";
 
@@ -75,7 +76,7 @@ function App() {
   };
 
   const handleOutClick = (evt) => {
-    if (evt.target === evt.currentTarget) setActiveModal();
+    if (evt.target === evt.currentTarget) handleClosePopup();
   };
 
   const handleLogin = (email, pw) => {
@@ -95,7 +96,7 @@ function App() {
               setIsLoggedIn(true);
             })
             .then(() => {
-              history.push("http://localhost:3001/profile");
+              history.push("/profile");
             })
             .catch((err) => console.log(err));
         }
@@ -138,10 +139,12 @@ function App() {
       })
       .then(() => {
         handleClosePopup();
-        setIsLoading(false);
+      
       })
       .catch((err) => {
         console.log(err);
+      }).finally(()=>{
+        setIsLoading(false);
       });
   };
   const handleLogout = () => {
@@ -287,14 +290,7 @@ function App() {
               )}
             />
 
-            <Route
-              exact
-              path="/profile"
-              render={() => {
-                if (!isLoggedIn) {
-                  return <Redirect to="/" />;
-                }
-                return (
+<ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                   <Profile
                     weatherData={weatherData}
                     onCardClick={handleSelectedCard}
@@ -305,9 +301,7 @@ function App() {
                     editClick={handleEditClick}
                     handleLogout={handleLogoutClick}
                   />
-                );
-              }}
-            />
+          </ProtectedRoute>
           </Switch>
 
           <Footer />

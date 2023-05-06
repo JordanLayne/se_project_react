@@ -1,12 +1,11 @@
 import { apiUrl } from "./Constants";
-
+import { processRes } from "./Constants";
 export const getWeather = () => {
-  return fetch(apiUrl).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(apiUrl)
+    .then(processRes)
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
 };
 
 export const filterData = (data) => {
